@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "6d59cb29-2290-4926-a1bc-49fa81a0c68a",
+		"name": "loans-store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25342704"
+	},
+	"item": [
+		{
+			"name": "add loan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"loanId\": \"L1\",\r\n        \"customerId\": \"C1\",\r\n        \"lenderId\": \"LEN1\",\r\n        \"amount\": 10000,\r\n        \"remainingAmount\": 5000,\r\n        \"paymentDate\": \"2023-06-05\",\r\n        \"interest\": 1,\r\n        \"dueDate\": \"2023-07-05\",\r\n        \"penalty\": 0.01\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/loans/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all loans",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loans",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loans by loan id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loans/loan/L1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans",
+						"loan",
+						"L1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loans by lender id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loans/lender/LEN1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans",
+						"lender",
+						"LEN1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loans by customer id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loans/customer/C1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans",
+						"customer",
+						"C1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get aggregate amount by lender id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loans/aggregate/lender/LEN1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans",
+						"aggregate",
+						"lender",
+						"LEN1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get aggregate amount by customer id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/loans/aggregate/customer/C1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loans",
+						"aggregate",
+						"customer",
+						"C1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

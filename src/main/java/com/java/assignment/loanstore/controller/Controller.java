@@ -1,6 +1,5 @@
 package com.java.assignment.loanstore.controller;
 
-import com.java.assignment.loanstore.exception.PaymentDateAfterDueDateException;
 import com.java.assignment.loanstore.model.LoanStore;
 import com.java.assignment.loanstore.request.LoansRequest;
 import com.java.assignment.loanstore.response.AggregateResponse;
