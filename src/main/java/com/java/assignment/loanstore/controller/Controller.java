@@ -1,6 +1,7 @@
 package com.java.assignment.loanstore.controller;
 
 import com.java.assignment.loanstore.model.LoanStore;
+import com.java.assignment.loanstore.oAuth2Security.AzureOauth2Service;
 import com.java.assignment.loanstore.request.LoansRequest;
 import com.java.assignment.loanstore.response.AggregateResponse;
 import com.java.assignment.loanstore.service.LoanStoreService;
@@ -21,6 +22,40 @@ public class Controller {
 
     @Autowired
     private LoanStoreService loanStoreService;
+
+    @Autowired
+    private AzureOauth2Service azureOauth2Service;
+
+//    private static String authorizationRequestBaseUri
+//            = "oauth2/authorization";
+//    Map<String, String> oauth2AuthenticationUrls
+//            = new HashMap<>();
+
+//    @Autowired
+//    private ClientRegistrationRepository clientRegistrationRepository;
+
+//    @GetMapping("/login")
+//    public String getLoginPage(Model model) {
+//        Iterable<ClientRegistration> clientRegistrations = null;
+//        ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository)
+//                .as(Iterable.class);
+//        if (type != ResolvableType.NONE &&
+//                ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
+//            clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
+//        }
+//
+//        clientRegistrations.forEach(registration ->
+//                oauth2AuthenticationUrls.put(registration.getClientName(),
+//                        authorizationRequestBaseUri + "/" + registration.getRegistrationId()));
+//        model.addAttribute("urls", oauth2AuthenticationUrls);
+//
+//        return "oauth_login";
+//    }
+
+    @PostMapping("/login")
+    public String getAccessToken() {
+        return azureOauth2Service.generateToken();
+    }
 
     @PostMapping("/add")
     public ResponseEntity<String> addLoan(@RequestBody LoansRequest request) {
