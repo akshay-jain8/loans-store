@@ -1,5 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<h3>Login with:</h3>
+<h3>Login with Microsoft:</h3>
 <p th:each="url : ${urls}">
-    <a th:text="${url.key}" th:href="${url.value}">Client</a>
+    <a href="https://login.microsoftonline.com/17780279-8711-444f-a2c8-0e948eeaa315/oauth2/v2.0/authorize
+    ?response_type=code
+    &client_id=4e5eccbd-5bfe-4c0a-91ad-e375f61fb35d
+    &scope=api://4e5eccbd-5bfe-4c0a-91ad-e375f61fb35d/.default
+    &state=state123
+    &redirect_uri=http://localhost:8080/login/oAuth2/code
+    &access_type=offline
+    &prompt=consent">
+        Sign In
+    </a>
 </p>
+</html>

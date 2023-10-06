@@ -29,7 +29,7 @@ public class AzureOauth2Service {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
         map.add("response_type", response_type);
@@ -43,17 +43,19 @@ public class AzureOauth2Service {
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, httpHeaders);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         authCode = response.getBody();
+        if(authCode != null) {
+            getAccessToken(authCode);
+        }
         return authCode;
     }
 
-    public String getAccessToken() {
+    public String getAccessToken(String authCode) {
         String accessToken;
         String token;
         String url = "https://login.microsoftonline.com/17780279-8711-444f-a2c8-0e948eeaa315/oauth2/v2.0/token";
         String grant_type = "authorization_code";
         String client_id = "4e5eccbd-5bfe-4c0a-91ad-e375f61fb35d";
         String client_secret = "awH8Q~L_FTCFwO0JJ3YCFp~2fkNCX7no75gwub1e";
-//        String authCode = getAuthorizationCode();
         String redirect_uri = "http://localhost:8080/login/oAuth2/code";
         RestTemplate restTemplate = new RestTemplate();
 
